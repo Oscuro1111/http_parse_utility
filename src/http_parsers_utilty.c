@@ -276,10 +276,7 @@ int is_query_regex(char *regexp, char *to_match, Queries *queries)
             //Base is changing
             start = m[i].rm_so + (p - to_match);
             finish = m[i].rm_eo + (p - to_match);
-            if (i == 0)
-            {
-                //  printf("$& is ");
-            }
+          
             //key
             if(i==1){
                 //eg:name

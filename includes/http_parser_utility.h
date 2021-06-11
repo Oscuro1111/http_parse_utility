@@ -12,12 +12,10 @@ typedef struct get_req{
 
 }Get_Req;
 
+//parse http request GET request.
 int http_get_req_parser(char *str,Get_Req *get_r);
 
 int http_get_req_is_file(char *str, char *store, unsigned int size);
 
-  
 int http_get_req_is_route(char *str);
-
-int http_get_req_has_query(char *str);
 #endif
