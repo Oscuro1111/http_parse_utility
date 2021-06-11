@@ -71,7 +71,7 @@ typedef struct http_request {
   Header_t header;
   int clnt_sock;
   char *mem_buffer;
-  void *_mem_get_req; // buffer used to save header data
+  void *get_req_mem; // buffer used to save header data
 } Request;
 
 //GET request parser
