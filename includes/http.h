@@ -49,12 +49,16 @@ typedef struct http_header {
   char *method;
   char *content_type;
   char *boundary;
+  //unparsed url
   char *path;
-  char *protocol;
 
-  //Queries
-  Queries *queries;
-  
+  char *route_name;
+  char *file_name;
+  char *url_path;
+
+  Queries *qrs;
+
+  char *protocol;  
   char **cookies;
   char *accept_charset;
   char *host;
@@ -64,14 +68,19 @@ typedef struct http_header {
   char *connection;
   char *body;
   char *origin;
+
   uint32_t content_length;
+  
 } Header_t;
 
 typedef struct http_request {
+  
   Header_t header;
+
   int clnt_sock;
-  char *mem_buffer;
-  void *get_req_mem; // buffer used to save header data
+  char *mem_buffer; // buffer used to save header data
+  //Type Get_Req
+  void *get_req_mem; //memory for parsed Get_request and queries must not altered.
 } Request;
 
 //GET request parser

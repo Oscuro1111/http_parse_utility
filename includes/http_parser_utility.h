@@ -2,7 +2,6 @@
 #define __MPM_HTTP__PARSER__
 
 #include "./http.h"
-
 typedef struct get_req{
     char path[1024];
     char file_name[512];
