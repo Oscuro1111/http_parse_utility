@@ -45,6 +45,19 @@ typedef struct query{
 
 void dispose_queries(Queries *);
 
+typedef struct multipart_form_data{
+  char file_name[512];
+  char file_path[1024];
+  uint32_t file_size;
+  //if any file recieved set to  1 and is not set  to 0.
+  uint8_t is_any_file;
+}__File;
+
+typedef struct post_body{
+  Queries *form;
+
+}Post_Body;
+
 typedef struct http_header {
   char *method;
   char *content_type;
@@ -57,6 +70,10 @@ typedef struct http_header {
   char *url_path;
 
   Queries *qrs;
+  
+  __File multipart_form;
+
+  Post_Body body;
 
   char *protocol;  
   char **cookies;
@@ -66,7 +83,6 @@ typedef struct http_header {
   char *accept_language;
   char *accept_encoding;
   char *connection;
-  char *body;
   char *origin;
 
   uint32_t content_length;
@@ -103,7 +119,7 @@ Queries *parse_encoded_url(Request *request, char *remain, uint32_t readed_bytes
 
 #define MAX_NUM_FILES_SUPPORT 10
 
-typedef struct multipart_form_data {
+typedef struct multipart_form_file {
   uint file_size;
   char *file_name;
   char *file_data;
@@ -115,6 +131,11 @@ typedef struct multipart_form {
   Multipart_Form_Data forms[MAX_NUM_FILES_SUPPORT];
   unsigned int counter;
 } Multipart_Form;
+
+
+
+//send http response to client of text/html content_type 
+int response_msg(int client_sock_fd,char *_msg);
 
 // Recive multipart file data
 char *recive(char *root_dir, Request *request,
