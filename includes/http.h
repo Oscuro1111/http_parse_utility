@@ -167,10 +167,15 @@ int parse(const char *buffer, size_t size, uint32_t num_header_option,
 int readChannel(char *buf, size_t size, FILE *file, uint32_t *new_lines);
 
 // Set http Header
-void set_responseHeader(Response *res, int res_option, char *value);
+void set_responseHeader(Response *res, int res_option, const char *value);
 
 void response(Response *http_response, char *body, uint length, uint size);
 
 // Handle http client
 void HandleClient(int clntSock, char *resource_dir, char *root_dir);
+
+
+
+
+void response_error(Response *http_response, Request *request, char *message, const char *error_code);
 #endif
