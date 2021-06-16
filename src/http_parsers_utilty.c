@@ -217,7 +217,7 @@ int http_get_path_file(char *str, char *store, unsigned int size)
     const char *regex_text;
     const char *find_text;
     int res = -1;
-    regex_text = "(/([a-zA-Z][a-z0-9A-Z.-]+))+";
+    regex_text = "(/([0-9@#a-zA-Z][a-z0-9A-Z.-]+))+";
     find_text = str;
 
     res = get_path_regex(regex_text, find_text, store, size);
