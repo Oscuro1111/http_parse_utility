@@ -86,7 +86,7 @@ int http_get_req_is_file(char *str, char *store, unsigned int size)
     const char *find_text;
 
     int res = -1;
-    regex_text = "(/([a-zA-Z][a-z0-9A-Z.-]+))+";
+    regex_text = "(/([0-9a-zA-Z_-][a-z0-9A-Z.-]+))+";
     find_text = str;
 
     res = is_file_regex(regex_text, find_text, store, size);
